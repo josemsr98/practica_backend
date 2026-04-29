@@ -7,5 +7,5 @@ import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer> {
-    
+	UsuarioEntity findByNickUsuario(String nickUsuario);
 }
