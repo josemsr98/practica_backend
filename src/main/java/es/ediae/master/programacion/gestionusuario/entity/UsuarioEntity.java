@@ -20,9 +20,13 @@ public class UsuarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     // Nombre de usuario único (no null)
     @Column (name = "nick_usuario", nullable=false)
     private String nickUsuario;
+
+    @Column (name= "es_admin", nullable=false)
+    private boolean esAdmin;
 
     // Contraseña del usuario (no null)
     @Column (name = "contrasena", nullable=false)
@@ -73,7 +77,7 @@ public class UsuarioEntity {
         // Constructor completo (útil para crear instancias con todos los datos)
         public UsuarioEntity(Integer id, String nickUsuario, String contrasena, LocalDateTime fechaHoraCreacion,
             GeneroEntity genero, String nombre, String primerApellido, String segundoApellido, LocalDate fechaNacimiento,
-            LocalTime horaDesayuno, PuestoDeTrabajoEntity puestoDeTrabajo) {
+            LocalTime horaDesayuno, PuestoDeTrabajoEntity puestoDeTrabajo, boolean esAdmin) {
         this.id = id;
         this.nickUsuario = nickUsuario;
         this.contrasena = contrasena;
@@ -85,6 +89,7 @@ public class UsuarioEntity {
         this.fechaNacimiento = fechaNacimiento;
         this.horaDesayuno = horaDesayuno;
         this.puestoDeTrabajo = puestoDeTrabajo;
+        this.esAdmin = esAdmin;
     }
     // Constructor vacío requerido por JPA/Hibernate
     public UsuarioEntity() {
@@ -94,8 +99,17 @@ public class UsuarioEntity {
         return id;
     }
 
+
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isEsAdmin() {
+        return esAdmin;
+    }
+
+    public void setEsAdmin(boolean esAdmin) {
+        this.esAdmin = esAdmin;
     }
 
     public String getNickUsuario() {
