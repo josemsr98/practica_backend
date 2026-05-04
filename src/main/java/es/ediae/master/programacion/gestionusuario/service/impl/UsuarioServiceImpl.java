@@ -20,10 +20,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final GeneroRepository generoRepository;
     private final PuestoDeTrabajoRepository puestoDeTrabajoRepository;
-    
 
-    
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, GeneroRepository generoRepository, PuestoDeTrabajoRepository puestoDeTrabajoRepository) {
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, GeneroRepository generoRepository,
+            PuestoDeTrabajoRepository puestoDeTrabajoRepository) {
         this.usuarioRepository = usuarioRepository;
         this.generoRepository = generoRepository;
         this.puestoDeTrabajoRepository = puestoDeTrabajoRepository;
@@ -59,7 +58,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         // Asignar GeneroEntity
         if (usuarioDTO.getGeneroId() != null) {
             GeneroEntity genero = generoRepository.findById(usuarioDTO.getGeneroId())
-                .orElseThrow(() -> new RuntimeException("Género no encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Género no encontrado"));
             entity.setGenero(genero);
         } else {
             throw new RuntimeException("El género es obligatorio");
@@ -67,7 +66,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         // Asignar PuestoDeTrabajoEntity si viene el ID
         if (usuarioDTO.getPuestoDeTrabajoId() != null) {
             PuestoDeTrabajoEntity puesto = puestoDeTrabajoRepository.findById(usuarioDTO.getPuestoDeTrabajoId())
-                .orElseThrow(() -> new RuntimeException("Puesto de trabajo no encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Puesto de trabajo no encontrado"));
             entity.setPuestoDeTrabajo(puesto);
         } else {
             entity.setPuestoDeTrabajo(null);
@@ -85,7 +84,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         // Asignar GeneroEntity
         if (usuarioDTO.getGeneroId() != null) {
             GeneroEntity genero = generoRepository.findById(usuarioDTO.getGeneroId())
-                .orElseThrow(() -> new RuntimeException("Género no encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Género no encontrado"));
             entity.setGenero(genero);
         } else {
             throw new RuntimeException("El género es obligatorio");
@@ -93,7 +92,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         // Asignar PuestoDeTrabajoEntity si viene el ID
         if (usuarioDTO.getPuestoDeTrabajoId() != null) {
             PuestoDeTrabajoEntity puesto = puestoDeTrabajoRepository.findById(usuarioDTO.getPuestoDeTrabajoId())
-                .orElseThrow(() -> new RuntimeException("Puesto de trabajo no encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Puesto de trabajo no encontrado"));
             entity.setPuestoDeTrabajo(puesto);
         } else {
             entity.setPuestoDeTrabajo(null);
@@ -110,14 +109,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public List<?> obtenerGeneros(String nickUsuario, String contrasena) {
-        // Implementa la lógica para obtener géneros
-        return List.of();
+    public List<GeneroEntity> obtenerGeneros(String nickUsuario, String contrasena) {
+        return generoRepository.findAll();
     }
 
     @Override
-    public List<?> obtenerPuestosDeTrabajo(String nickUsuario, String contrasena) {
-        // Implementa la lógica para obtener puestos de trabajo
-        return List.of();
+    public List<PuestoDeTrabajoEntity> obtenerPuestosDeTrabajo(String nickUsuario, String contrasena) {
+        return puestoDeTrabajoRepository.findAll();
     }
 }
