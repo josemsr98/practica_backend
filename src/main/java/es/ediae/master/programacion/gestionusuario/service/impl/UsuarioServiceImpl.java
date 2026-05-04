@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
+import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
 import es.ediae.master.programacion.gestionusuario.repository.GeneroRepository;
 import es.ediae.master.programacion.gestionusuario.repository.PuestoDeTrabajoRepository;
@@ -38,17 +39,17 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public List<UsuarioDTO> obtenerUsuarios(String nickUsuario, String contrasena) {
+    public List<UsuarioResumenDTO> obtenerUsuarios() {
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         List<UsuarioEntity> usuarios = usuarioRepository.findAll();
-        return UsuarioDTO.fromEntityList(usuarios);
+        return UsuarioResumenDTO.fromEntityList(usuarios);
     }
 
     @Override
-    public UsuarioDTO obtenerUsuario(Integer id, String nickUsuario, String contrasena) {
+    public UsuarioResumenDTO obtenerUsuario(Integer id) {
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         UsuarioEntity usuario = usuarioRepository.findById(id).orElse(null);
-        return UsuarioDTO.fromEntity(usuario);
+        return UsuarioResumenDTO.fromEntity(usuario);
     }
 
     @Override
@@ -80,6 +81,24 @@ public class UsuarioServiceImpl implements IUsuarioService {
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         UsuarioEntity entity = usuarioDTO.toEntity();
         entity.setId(id);
+
+        // Asignar GeneroEntity
+        if (usuarioDTO.getGeneroId() != null) {
+            GeneroEntity genero = generoRepository.findById(usuarioDTO.getGeneroId())
+                .orElseThrow(() -> new RuntimeException("Género no encontrado"));
+            entity.setGenero(genero);
+        } else {
+            throw new RuntimeException("El género es obligatorio");
+        }
+        // Asignar PuestoDeTrabajoEntity si viene el ID
+        if (usuarioDTO.getPuestoDeTrabajoId() != null) {
+            PuestoDeTrabajoEntity puesto = puestoDeTrabajoRepository.findById(usuarioDTO.getPuestoDeTrabajoId())
+                .orElseThrow(() -> new RuntimeException("Puesto de trabajo no encontrado"));
+            entity.setPuestoDeTrabajo(puesto);
+        } else {
+            entity.setPuestoDeTrabajo(null);
+        }
+
         UsuarioEntity saved = usuarioRepository.save(entity);
         return UsuarioDTO.fromEntity(saved);
     }

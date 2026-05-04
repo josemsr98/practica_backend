@@ -2,6 +2,7 @@
 package es.ediae.master.programacion.gestionusuario.controller;
 
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
+import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,16 +27,16 @@ public class UsuarioController {
 	 * Obtener todos los usuarios (incluye género y puesto de trabajo).
 	 */
 	@GetMapping
-	public List<UsuarioDTO> obtenerUsuarios(@RequestParam String nickUsuario, @RequestParam String contrasena) {
-		return usuarioService.obtenerUsuarios(nickUsuario, contrasena);
+	public List<UsuarioResumenDTO> obtenerUsuarios() {
+		return usuarioService.obtenerUsuarios();
 	}
 
 	/**
 	 * Obtener un usuario por su id.
 	 */
 	@GetMapping("/{id}")
-	public UsuarioDTO obtenerUsuario(@PathVariable Integer id, @RequestParam String nickUsuario, @RequestParam String contrasena) {
-		return usuarioService.obtenerUsuario(id, nickUsuario, contrasena);
+	public UsuarioResumenDTO obtenerUsuario(@PathVariable Integer id) {
+		return usuarioService.obtenerUsuario(id);
 	}
 
 	/**
@@ -51,6 +52,7 @@ public class UsuarioController {
 	 */
 	@PutMapping("/{id}")
 	public UsuarioDTO actualizarUsuario(@PathVariable Integer id, @RequestBody UsuarioDTO usuarioDTO, @RequestParam String nickUsuario, @RequestParam String contrasena) {
+		
 		return usuarioService.actualizarUsuario(id, usuarioDTO, nickUsuario, contrasena);
 	}
 

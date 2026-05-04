@@ -59,13 +59,13 @@ public class UsuarioEntity {
     private LocalDate fechaNacimiento;
 
     // Hora de desayuno (puede ser null)
-    @Column (name = "hora_desayuno")
+    @Column (name = "hora_desayuno", nullable=true)
     private LocalTime horaDesayuno;
 
     // Relación muchos-a-uno con PuestoDeTrabajo (puede ser null)
     // Mapea la columna puesto_de_trabajo_id como clave foránea
     @ManyToOne
-    @JoinColumn(name= "puesto_de_trabajo_id")
+    @JoinColumn(name= "puesto_de_trabajo_id", nullable=true)
     private PuestoDeTrabajoEntity puestoDeTrabajo;
 
     // Relación uno-a-muchos con DireccionEntity
