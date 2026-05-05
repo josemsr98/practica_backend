@@ -27,16 +27,16 @@ public class UsuarioController {
 	 * Obtener todos los usuarios (incluye género y puesto de trabajo).
 	 */
 	@GetMapping
-	public List<UsuarioResumenDTO> obtenerUsuarios() {
-		return usuarioService.obtenerUsuarios();
+	public List<UsuarioResumenDTO> obtenerUsuarios(@RequestParam String nickUsuario, @RequestParam String contrasena) {
+		return usuarioService.obtenerUsuarios(nickUsuario, contrasena);
 	}
 
 	/**
 	 * Obtener un usuario por su id.
 	 */
 	@GetMapping("/{id}")
-	public UsuarioResumenDTO obtenerUsuario(@PathVariable Integer id) {
-		return usuarioService.obtenerUsuario(id);
+	public UsuarioResumenDTO obtenerUsuario(@PathVariable Integer id, @RequestParam String nickUsuario, @RequestParam String contrasena) {
+		return usuarioService.obtenerUsuario(id, nickUsuario, contrasena);
 	}
 
 	/**

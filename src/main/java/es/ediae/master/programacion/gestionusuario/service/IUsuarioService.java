@@ -2,7 +2,7 @@ package es.ediae.master.programacion.gestionusuario.service;
 
 import java.util.List;
 
-import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
+
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 
@@ -10,9 +10,9 @@ public interface IUsuarioService {
 
     public boolean iniciarSesion(String nickUsuario, String contrasena);
 
-    public List<UsuarioResumenDTO> obtenerUsuarios();
+    public List<UsuarioResumenDTO> obtenerUsuarios(String nickUsuario, String contrasena);
 
-    public UsuarioResumenDTO obtenerUsuario(Integer id);
+    public UsuarioResumenDTO obtenerUsuario(Integer id, String nickUsuario, String contrasena);
 
     public UsuarioDTO crearUsuario(UsuarioDTO usuario, String nickUsuario, String contrasena);
 
