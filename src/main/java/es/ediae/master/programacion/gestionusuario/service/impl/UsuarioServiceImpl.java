@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
-import es.ediae.master.programacion.gestionusuario.model.GeneroDTO;
-import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
@@ -110,7 +108,4 @@ public class UsuarioServiceImpl implements IUsuarioService {
         usuarioRepository.deleteById(id);
     }
 
-    
-
-    
 }
