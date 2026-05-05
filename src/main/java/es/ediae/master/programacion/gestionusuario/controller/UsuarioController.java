@@ -1,6 +1,8 @@
 
 package es.ediae.master.programacion.gestionusuario.controller;
 
+import es.ediae.master.programacion.gestionusuario.model.GeneroDTO;
+import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
@@ -68,7 +70,7 @@ public class UsuarioController {
 	 * Obtener todos los géneros disponibles.
 	 */
 	@GetMapping("/generos")
-	public List<?> obtenerGeneros(@RequestParam String nickUsuario, @RequestParam String contrasena) {
+	public List<GeneroDTO> obtenerGeneros(@RequestParam String nickUsuario, @RequestParam String contrasena) {
 		return usuarioService.obtenerGeneros(nickUsuario, contrasena);
 	}
 
@@ -76,7 +78,7 @@ public class UsuarioController {
 	 * Obtener todos los puestos de trabajo disponibles.
 	 */
 	@GetMapping("/puestosDeTrabajo")
-	public List<?> obtenerPuestosDeTrabajo(@RequestParam String nickUsuario, @RequestParam String contrasena) {
+	public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo(@RequestParam String nickUsuario, @RequestParam String contrasena) {
 		return usuarioService.obtenerPuestosDeTrabajo(nickUsuario, contrasena);
 	}
 }

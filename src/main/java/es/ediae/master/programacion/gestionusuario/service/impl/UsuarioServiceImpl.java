@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
+import es.ediae.master.programacion.gestionusuario.model.GeneroDTO;
+import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
@@ -109,12 +111,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public List<GeneroEntity> obtenerGeneros(String nickUsuario, String contrasena) {
-        return generoRepository.findAll();
+    public List<GeneroDTO> obtenerGeneros(String nickUsuario, String contrasena) {
+        List<GeneroEntity> generoEntity = generoRepository.findAll();
+        return GeneroDTO.fromEntityList(generoEntity);
     }
 
     @Override
-    public List<PuestoDeTrabajoEntity> obtenerPuestosDeTrabajo(String nickUsuario, String contrasena) {
-        return puestoDeTrabajoRepository.findAll();
+    public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo(String nickUsuario, String contrasena) {
+        List<PuestoDeTrabajoEntity> puestoDeTrabajoEntity = puestoDeTrabajoRepository.findAll();
+        return PuestoDeTrabajoDTO.fromEntityList(puestoDeTrabajoEntity);
     }
 }
