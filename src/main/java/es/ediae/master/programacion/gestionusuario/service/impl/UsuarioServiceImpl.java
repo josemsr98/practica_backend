@@ -30,9 +30,20 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Override
     public boolean iniciarSesion(String nickUsuario, String contrasena) {
+        System.out.println("[DEBUG] nickUsuario recibido: '" + nickUsuario + "'");
+        System.out.println("[DEBUG] contrasena recibida: '" + contrasena + "'");
         UsuarioEntity usuario = usuarioRepository.findByNickUsuario(nickUsuario);
-        if (usuario != null && usuario.getContrasena().equals(contrasena)) {
-            return true;
+        if (usuario != null) {
+            System.out.println("[DEBUG] nickUsuario en BD: '" + usuario.getNickUsuario() + "'");
+            System.out.println("[DEBUG] contrasena en BD: '" + usuario.getContrasena() + "'");
+            if (usuario.getContrasena().equals(contrasena)) {
+                System.out.println("[DEBUG] Contraseña coincide. Login exitoso.");
+                return true;
+            } else {
+                System.out.println("[DEBUG] Contraseña NO coincide.");
+            }
+        } else {
+            System.out.println("[DEBUG] Usuario no encontrado en la base de datos.");
         }
         return false;
     }
@@ -53,8 +64,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Override
     public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO, String nickUsuario, String contrasena) {
+                // Validar nickUsuario único
+                if (usuarioRepository.findByNickUsuario(usuarioDTO.getNickUsuario()) != null) {
+                    throw new RuntimeException("El nickUsuario ya existe. No se puede crear el usuario.");
+                }
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         UsuarioEntity entity = usuarioDTO.toEntity();
+        // Si la fecha de creación es null, la asignamos automáticamente
+        if (entity.getFechaHoraCreacion() == null) {
+            entity.setFechaHoraCreacion(java.time.LocalDateTime.now());
+        }
         // Asignar GeneroEntity
         if (usuarioDTO.getGeneroId() != null) {
             GeneroEntity genero = generoRepository.findById(usuarioDTO.getGeneroId())
@@ -77,6 +96,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Override
     public UsuarioDTO actualizarUsuario(Integer id, UsuarioDTO usuarioDTO, String nickUsuario, String contrasena) {
+                // Validar nickUsuario único (excepto para el propio usuario)
+                UsuarioEntity existente = usuarioRepository.findByNickUsuario(usuarioDTO.getNickUsuario());
+                if (existente != null && !existente.getId().equals(id)) {
+                    throw new RuntimeException("El nickUsuario ya existe. No se puede actualizar el usuario.");
+                }
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         UsuarioEntity entity = usuarioDTO.toEntity();
         entity.setId(id);

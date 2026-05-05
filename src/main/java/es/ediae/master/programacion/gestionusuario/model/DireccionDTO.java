@@ -72,6 +72,16 @@ public class DireccionDTO {
     public void setDireccionPrincipal(boolean direccionPrincipal) {
         this.direccionPrincipal = direccionPrincipal;
     }
+    // Conversión de DTO a Entity
+    public DireccionEntity toEntity() {
+        DireccionEntity entity = new DireccionEntity();
+        
+        entity.setNombreCalle(this.nombreCalle);
+        entity.setNumeroCalle(this.numeroCalle);
+        entity.setDireccionPrincipal(this.direccionPrincipal);
+        // Nota: usuarioId requiere que se asigne un UsuarioEntity externo si es necesario
+        return entity;
+    }
     
     
 }
