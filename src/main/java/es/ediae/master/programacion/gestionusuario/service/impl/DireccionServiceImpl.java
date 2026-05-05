@@ -1,16 +1,11 @@
 package es.ediae.master.programacion.gestionusuario.service.impl;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import es.ediae.master.programacion.gestionusuario.entity.DireccionEntity;
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
 import es.ediae.master.programacion.gestionusuario.model.DireccionDTO;
-import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.repository.DireccionRepository;
-import es.ediae.master.programacion.gestionusuario.repository.GeneroRepository;
-import es.ediae.master.programacion.gestionusuario.repository.PuestoDeTrabajoRepository;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
 import es.ediae.master.programacion.gestionusuario.service.IDireccionService;
 
@@ -18,35 +13,33 @@ import es.ediae.master.programacion.gestionusuario.service.IDireccionService;
 public class DireccionServiceImpl implements IDireccionService {
 
     private final UsuarioRepository usuarioRepository;
-    private final GeneroRepository generoRepository;
-    private final PuestoDeTrabajoRepository puestoDeTrabajoRepository;
     private final DireccionRepository direccionRepository;
 
-    public DireccionServiceImpl(UsuarioRepository usuarioRepository, GeneroRepository generoRepository,
-            PuestoDeTrabajoRepository puestoDeTrabajoRepository, DireccionRepository direccionRepository) {
+    public DireccionServiceImpl(UsuarioRepository usuarioRepository, DireccionRepository direccionRepository) {
         this.usuarioRepository = usuarioRepository;
-        this.generoRepository = generoRepository;
         this.direccionRepository = direccionRepository;
-        this.puestoDeTrabajoRepository = puestoDeTrabajoRepository;
     }
 
     @Override
     public List<DireccionDTO> obtenerDirecciones(Integer usuarioId, String nickUsuario, String contrasena) {
-        if (!usuarioValido(nickUsuario, contrasena)) return null;
+        if (!usuarioValido(nickUsuario, contrasena))
+            return null;
         List<DireccionEntity> direcciones = direccionRepository.findByUsuarioId(usuarioId);
         return DireccionDTO.fromEntityList(direcciones);
     }
 
     @Override
     public DireccionDTO obtenerDireccion(Integer id, String nickUsuario, String contrasena) {
-        if (!usuarioValido(nickUsuario, contrasena)) return null;
+        if (!usuarioValido(nickUsuario, contrasena))
+            return null;
         DireccionEntity direccion = direccionRepository.findById(id).orElse(null);
         return DireccionDTO.fromEntity(direccion);
     }
 
     @Override
     public DireccionDTO crearDireccion(DireccionDTO direccion, String nickUsuario, String contrasena) {
-        if (!usuarioValido(nickUsuario, contrasena)) return null;
+        if (!usuarioValido(nickUsuario, contrasena))
+            return null;
         DireccionEntity entity = direccion.toEntity();
         // Asignar UsuarioEntity
         if (direccion.getUsuarioId() != null) {
@@ -59,7 +52,8 @@ public class DireccionServiceImpl implements IDireccionService {
 
     @Override
     public DireccionDTO actualizarDireccion(Integer id, DireccionDTO direccion, String nickUsuario, String contrasena) {
-        if (!usuarioValido(nickUsuario, contrasena)) return null;
+        if (!usuarioValido(nickUsuario, contrasena))
+            return null;
         // Convertimos el DTO recibido a una entidad DireccionEntity
         DireccionEntity entity = direccion.toEntity();
 
@@ -67,10 +61,12 @@ public class DireccionServiceImpl implements IDireccionService {
         entity.setId(id);
 
         // Buscamos y asignamos el usuario correspondiente usando el usuarioId del DTO
-        // Si el usuario no existe, se lanzará una excepción para evitar guardar una dirección sin usuario
+        // Si el usuario no existe, se lanzará una excepción para evitar guardar una
+        // dirección sin usuario
         if (direccion.getUsuarioId() != null) {
             UsuarioEntity usuario = usuarioRepository.findById(direccion.getUsuarioId())
-                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + direccion.getUsuarioId()));
+                    .orElseThrow(() -> new IllegalArgumentException(
+                            "Usuario no encontrado con id: " + direccion.getUsuarioId()));
             entity.setUsuario(usuario);
         } else {
             throw new IllegalArgumentException("El usuarioId no puede ser null al actualizar una dirección");
@@ -85,7 +81,8 @@ public class DireccionServiceImpl implements IDireccionService {
 
     @Override
     public void eliminarDireccion(Integer id, String nickUsuario, String contrasena) {
-        if (!usuarioValido(nickUsuario, contrasena)) return;
+        if (!usuarioValido(nickUsuario, contrasena))
+            return;
         direccionRepository.deleteById(id);
     }
 
