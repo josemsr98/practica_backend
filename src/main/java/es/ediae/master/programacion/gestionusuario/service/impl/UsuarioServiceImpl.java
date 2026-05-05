@@ -110,15 +110,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         usuarioRepository.deleteById(id);
     }
 
-    @Override
-    public List<GeneroDTO> obtenerGeneros(String nickUsuario, String contrasena) {
-        List<GeneroEntity> generoEntity = generoRepository.findAll();
-        return GeneroDTO.fromEntityList(generoEntity);
-    }
+    
 
-    @Override
-    public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo(String nickUsuario, String contrasena) {
-        List<PuestoDeTrabajoEntity> puestoDeTrabajoEntity = puestoDeTrabajoRepository.findAll();
-        return PuestoDeTrabajoDTO.fromEntityList(puestoDeTrabajoEntity);
-    }
+    
 }

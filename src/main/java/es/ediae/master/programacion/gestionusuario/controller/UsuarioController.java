@@ -6,6 +6,8 @@ import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
+import es.ediae.master.programacion.gestionusuario.service.IGeneroService;
+import es.ediae.master.programacion.gestionusuario.service.IPuestoDeTrabajoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,6 +18,12 @@ public class UsuarioController {
 
 	@Autowired
 	private IUsuarioService usuarioService;
+
+	@Autowired
+	private IGeneroService generoService;
+
+	@Autowired
+	private IPuestoDeTrabajoService puestoDeTrabajoService;
 
 	/**
 	 * Iniciar sesión: verifica si el usuario y contraseña son válidos.
@@ -71,7 +79,7 @@ public class UsuarioController {
 	 */
 	@GetMapping("/generos")
 	public List<GeneroDTO> obtenerGeneros(@RequestParam String nickUsuario, @RequestParam String contrasena) {
-		return usuarioService.obtenerGeneros(nickUsuario, contrasena);
+		return generoService.obtenerGeneros(nickUsuario, contrasena);
 	}
 
 	/**
@@ -79,7 +87,7 @@ public class UsuarioController {
 	 */
 	@GetMapping("/puestosDeTrabajo")
 	public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo(@RequestParam String nickUsuario, @RequestParam String contrasena) {
-		return usuarioService.obtenerPuestosDeTrabajo(nickUsuario, contrasena);
+		return puestoDeTrabajoService.obtenerPuestosDeTrabajo(nickUsuario, contrasena);
 	}
 }
 

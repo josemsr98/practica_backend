@@ -7,6 +7,6 @@ import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 
 public interface IPuestoDeTrabajoService {
 
-    public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo();
+    public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo(String nickUsuario, String contrasena);
     
 }
