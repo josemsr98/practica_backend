@@ -10,9 +10,9 @@ public interface IUsuarioService {
 
     public boolean iniciarSesion(String nickUsuario, String contrasena);
 
-    public List<UsuarioResumenDTO> obtenerUsuarios(String nickUsuario, String contrasena);
+    public List<UsuarioDTO> obtenerUsuarios(String nickUsuario, String contrasena);
 
-    public UsuarioResumenDTO obtenerUsuario(Integer id, String nickUsuario, String contrasena);
+    public UsuarioDTO obtenerUsuario(Integer id, String nickUsuario, String contrasena);
 
     public UsuarioDTO crearUsuario(UsuarioDTO usuario, String nickUsuario, String contrasena);
 

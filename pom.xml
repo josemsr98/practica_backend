@@ -79,6 +79,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- Plugin Flyway con configuración de conexión -->
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.20.1</version>
+				<configuration>
+					<url>jdbc:mysql://localhost:3306/practica_final_backend</url>
+					<user>root</user>
+					<password>artemis980</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

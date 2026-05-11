@@ -39,12 +39,15 @@ public class DireccionServiceImpl implements IDireccionService {
     @Override
     public DireccionDTO crearDireccion(DireccionDTO direccion, String nickUsuario, String contrasena) {
         if (!usuarioValido(nickUsuario, contrasena))
-            return null;
+            throw new IllegalArgumentException("Usuario o contraseña no válidos");
         DireccionEntity entity = direccion.toEntity();
         // Asignar UsuarioEntity
         if (direccion.getUsuarioId() != null) {
-            UsuarioEntity usuario = usuarioRepository.findById(direccion.getUsuarioId()).orElse(null);
+            UsuarioEntity usuario = usuarioRepository.findById(direccion.getUsuarioId())
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con id: " + direccion.getUsuarioId()));
             entity.setUsuario(usuario);
+        } else {
+            throw new IllegalArgumentException("El usuarioId no puede ser null al crear una dirección");
         }
         DireccionEntity savedEntity = direccionRepository.save(entity);
         return DireccionDTO.fromEntity(savedEntity);

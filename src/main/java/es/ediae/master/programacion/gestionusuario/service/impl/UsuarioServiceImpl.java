@@ -49,17 +49,17 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public List<UsuarioResumenDTO> obtenerUsuarios(String nickUsuario, String contrasena) {
+    public List<UsuarioDTO> obtenerUsuarios(String nickUsuario, String contrasena) {
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         List<UsuarioEntity> usuarios = usuarioRepository.findAll();
-        return UsuarioResumenDTO.fromEntityList(usuarios);
+        return UsuarioDTO.fromEntityList(usuarios);
     }
 
     @Override
-    public UsuarioResumenDTO obtenerUsuario(Integer id, String nickUsuario, String contrasena) {
+    public UsuarioDTO obtenerUsuario(Integer id, String nickUsuario, String contrasena) {
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         UsuarioEntity usuario = usuarioRepository.findById(id).orElse(null);
-        return UsuarioResumenDTO.fromEntity(usuario);
+        return UsuarioDTO.fromEntity(usuario);
     }
 
     @Override
