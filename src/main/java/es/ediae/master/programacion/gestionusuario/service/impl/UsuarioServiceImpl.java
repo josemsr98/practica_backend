@@ -2,6 +2,8 @@ package es.ediae.master.programacion.gestionusuario.service.impl;
 
 import java.util.List;
 
+
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
@@ -103,6 +105,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
         // Aquí puedes validar nickUsuario y contrasena si lo necesitas
         UsuarioEntity entity = usuarioDTO.toEntity();
         entity.setId(id);
+
+        // Si la fecha de creación es null, la asignamos automáticamente
+        if (entity.getFechaHoraCreacion() == null) {
+            entity.setFechaHoraCreacion(java.time.LocalDateTime.now());
+        }
 
         // Asignar GeneroEntity
         if (usuarioDTO.getGeneroId() != null) {

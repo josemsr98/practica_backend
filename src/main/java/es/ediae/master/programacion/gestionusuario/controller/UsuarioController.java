@@ -1,12 +1,10 @@
 
 package es.ediae.master.programacion.gestionusuario.controller;
 
-import es.ediae.master.programacion.gestionusuario.model.GeneroDTO;
+
 import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
-
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
-import es.ediae.master.programacion.gestionusuario.service.IGeneroService;
 import es.ediae.master.programacion.gestionusuario.service.IPuestoDeTrabajoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +17,7 @@ public class UsuarioController {
 	@Autowired
 	private IUsuarioService usuarioService;
 
-	@Autowired
-	private IGeneroService generoService;
-
+	
 	@Autowired
 	private IPuestoDeTrabajoService puestoDeTrabajoService;
 
@@ -77,10 +73,6 @@ public class UsuarioController {
 	/**
 	 * Obtener todos los géneros disponibles.
 	 */
-	@GetMapping("/generos")
-	public List<GeneroDTO> obtenerGeneros(@RequestParam String nickUsuario, @RequestParam String contrasena) {
-		return generoService.obtenerGeneros(nickUsuario, contrasena);
-	}
 
 	/**
 	 * Obtener todos los puestos de trabajo disponibles.

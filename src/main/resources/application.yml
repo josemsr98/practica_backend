@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/practica_final_backend
     username: root
-    password: artemis980
+    password: admin
   jpa:
     hibernate:
       ddl-auto: none
