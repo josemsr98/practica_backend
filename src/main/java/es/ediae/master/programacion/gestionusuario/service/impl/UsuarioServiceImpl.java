@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
-import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
 import es.ediae.master.programacion.gestionusuario.repository.GeneroRepository;
 import es.ediae.master.programacion.gestionusuario.repository.PuestoDeTrabajoRepository;

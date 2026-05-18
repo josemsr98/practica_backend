@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
-import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
+
 
 public interface IUsuarioService {
 
