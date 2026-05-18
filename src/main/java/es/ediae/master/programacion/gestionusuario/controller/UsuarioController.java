@@ -4,7 +4,7 @@ package es.ediae.master.programacion.gestionusuario.controller;
 import es.ediae.master.programacion.gestionusuario.model.GeneroDTO;
 import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
-import es.ediae.master.programacion.gestionusuario.model.UsuarioResumenDTO;
+
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
 import es.ediae.master.programacion.gestionusuario.service.IGeneroService;
 import es.ediae.master.programacion.gestionusuario.service.IPuestoDeTrabajoService;

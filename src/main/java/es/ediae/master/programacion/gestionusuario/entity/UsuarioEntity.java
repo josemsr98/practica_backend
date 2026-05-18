@@ -4,6 +4,7 @@
 // Utiliza anotaciones JPA/Hibernate para mapear atributos a columnas y relaciones SQL.
 package es.ediae.master.programacion.gestionusuario.entity;
 
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
 
 @Entity
 public class UsuarioEntity {
@@ -71,7 +73,8 @@ public class UsuarioEntity {
     // Relación uno-a-muchos con DireccionEntity
     // Un usuario puede tener varias direcciones
     // mappedBy indica que la relación está gestionada por el campo 'usuario' en DireccionEntity
-    @OneToMany(mappedBy = "usuario")
+    //cascade me permite que al eliminar un usuario se eliminen sus direcciones asociadas (orphanRemoval=true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DireccionEntity> direcciones=new ArrayList<>();
 
         // Constructor completo (útil para crear instancias con todos los datos)
