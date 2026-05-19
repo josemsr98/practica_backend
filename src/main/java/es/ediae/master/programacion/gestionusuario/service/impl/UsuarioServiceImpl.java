@@ -3,7 +3,6 @@ package es.ediae.master.programacion.gestionusuario.service.impl;
 import java.util.List;
 
 
-import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;

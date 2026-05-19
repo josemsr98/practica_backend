@@ -77,10 +77,7 @@ public class UsuarioController {
 	/**
 	 * Obtener todos los puestos de trabajo disponibles.
 	 */
-	@GetMapping("/puestosDeTrabajo")
-	public List<PuestoDeTrabajoDTO> obtenerPuestosDeTrabajo(@RequestParam String nickUsuario, @RequestParam String contrasena) {
-		return puestoDeTrabajoService.obtenerPuestosDeTrabajo(nickUsuario, contrasena);
-	}
+	
 }
 
 

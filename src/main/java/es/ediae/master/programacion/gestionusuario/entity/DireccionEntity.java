@@ -11,7 +11,7 @@ public class DireccionEntity {
     // Clave primaria autoincremental
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     // Nombre de la calle (no null)
     @Column(name="nombre_calle", nullable=false)
@@ -32,7 +32,7 @@ public class DireccionEntity {
     private boolean direccionPrincipal;
 
         // Constructor completo
-        public DireccionEntity(int id, String nombreCalle, int numeroCalle, UsuarioEntity usuario,
+        public DireccionEntity(int id, String nombreCalle, Integer numeroCalle, UsuarioEntity usuario,
             boolean direccionPrincipal) {
         this.id = id;
         this.nombreCalle = nombreCalle;
@@ -43,10 +43,10 @@ public class DireccionEntity {
     // Constructor vacío requerido por JPA/Hibernate
     public DireccionEntity() {
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNombreCalle() {
@@ -55,10 +55,10 @@ public class DireccionEntity {
     public void setNombreCalle(String nombreCalle) {
         this.nombreCalle = nombreCalle;
     }
-    public int getNumeroCalle() {
+    public Integer getNumeroCalle() {
         return numeroCalle;
     }
-    public void setNumeroCalle(int numeroCalle) {
+    public void setNumeroCalle(Integer numeroCalle) {
         this.numeroCalle = numeroCalle;
     }
     public UsuarioEntity getUsuario() {

@@ -14,6 +14,8 @@ public class DireccionDTO {
     private Integer usuarioId;
 
     private boolean direccionPrincipal;
+    public DireccionDTO() {
+    }
     public DireccionDTO(Integer id, String nombreCalle, Integer numeroCalle, Integer usuarioId,
             boolean direccionPrincipal) {
         this.id = id;
