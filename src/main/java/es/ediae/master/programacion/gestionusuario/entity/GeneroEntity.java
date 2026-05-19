@@ -2,6 +2,16 @@ package es.ediae.master.programacion.gestionusuario.entity;
 
 import jakarta.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class GeneroEntity {
     @Id
@@ -11,29 +21,5 @@ public class GeneroEntity {
     @Column(name="nombre", nullable=false, unique=true)
     private String nombre;
 
-    public GeneroEntity() {
-    }
-
-    public GeneroEntity(Integer id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
     
 }
