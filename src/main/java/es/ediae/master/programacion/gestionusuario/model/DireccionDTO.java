@@ -3,6 +3,15 @@ package es.ediae.master.programacion.gestionusuario.model;
 import es.ediae.master.programacion.gestionusuario.entity.DireccionEntity;
 import java.util.List;
 import java.util.ArrayList;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class DireccionDTO {
 
     private Integer id;
@@ -14,37 +23,7 @@ public class DireccionDTO {
     private Integer usuarioId;
 
     private boolean direccionPrincipal;
-    public DireccionDTO() {
-    }
-    public DireccionDTO(Integer id, String nombreCalle, Integer numeroCalle, Integer usuarioId,
-            boolean direccionPrincipal) {
-        this.id = id;
-        this.nombreCalle = nombreCalle;
-        this.numeroCalle = numeroCalle;
-        this.usuarioId = usuarioId;
-        this.direccionPrincipal = direccionPrincipal;
-    }
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getNombreCalle() {
-        return nombreCalle;
-    }
-    public void setNombreCalle(String nombreCalle) {
-        this.nombreCalle = nombreCalle;
-    }
-    public Integer getNumeroCalle() {
-        return numeroCalle;
-    }
-    public void setNumeroCalle(Integer numeroCalle) {
-        this.numeroCalle = numeroCalle;
-    }
-    public Integer getUsuarioId() {
-        return usuarioId;
-    }
+    
     // Conversión de Entity a DTO
     public static DireccionDTO fromEntity(DireccionEntity entity) {
         if (entity == null) return null;

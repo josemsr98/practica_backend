@@ -8,7 +8,15 @@ import java.util.List;
 import java.util.ArrayList;
 import es.ediae.master.programacion.gestionusuario.entity.UsuarioEntity;
 import es.ediae.master.programacion.gestionusuario.entity.DireccionEntity;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UsuarioDTO {
 
     private Integer id;
@@ -37,148 +45,6 @@ public class UsuarioDTO {
     private String puestoDeTrabajoNombre;
 
     private List<DireccionDTO> direcciones;
-
-    
-    public UsuarioDTO(Integer id, String nickUsuario, boolean esAdmin, String contrasena, String nombre,
-            String primerApellido, String segundoApellido, LocalDateTime fechaHoraCreacion, LocalDate fechaNacimiento,
-            LocalTime horaDesayuno, Integer generoId, String generoNombre, Integer puestoDeTrabajoId,
-            String puestoDeTrabajoNombre, List<DireccionDTO> direcciones) {
-        this.id = id;
-        this.nickUsuario = nickUsuario;
-        this.esAdmin = esAdmin;
-        this.contrasena = contrasena;
-        this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.fechaHoraCreacion = fechaHoraCreacion;
-        this.fechaNacimiento = fechaNacimiento;
-        this.horaDesayuno = horaDesayuno;
-        this.generoId = generoId;
-        this.generoNombre = generoNombre;
-        this.puestoDeTrabajoId = puestoDeTrabajoId;
-        this.puestoDeTrabajoNombre = puestoDeTrabajoNombre;
-        this.direcciones = direcciones;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNickUsuario() {
-        return nickUsuario;
-    }
-
-    public void setNickUsuario(String nickUsuario) {
-        this.nickUsuario = nickUsuario;
-    }
-
-    public boolean isEsAdmin() {
-        return esAdmin;
-    }
-
-    public void setEsAdmin(boolean esAdmin) {
-        this.esAdmin = esAdmin;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
-
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
-    }
-
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
-
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
-    }
-
-    public LocalDateTime getFechaHoraCreacion() {
-        return fechaHoraCreacion;
-    }
-
-    public void setFechaHoraCreacion(LocalDateTime fechaHoraCreacion) {
-        this.fechaHoraCreacion = fechaHoraCreacion;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public LocalTime getHoraDesayuno() {
-        return horaDesayuno;
-    }
-
-    public void setHoraDesayuno(LocalTime horaDesayuno) {
-        this.horaDesayuno = horaDesayuno;
-    }
-
-    public Integer getGeneroId() {
-        return generoId;
-    }
-
-    public void setGeneroId(Integer generoId) {
-        this.generoId = generoId;
-    }
-
-    public String getGeneroNombre() {
-        return generoNombre;
-    }
-
-    public void setGeneroNombre(String generoNombre) {
-        this.generoNombre = generoNombre;
-    }
-
-    public Integer getPuestoDeTrabajoId() {
-        return puestoDeTrabajoId;
-    }
-
-    public void setPuestoDeTrabajoId(Integer puestoDeTrabajoId) {
-        this.puestoDeTrabajoId = puestoDeTrabajoId;
-    }
-
-    public String getPuestoDeTrabajoNombre() {
-        return puestoDeTrabajoNombre;
-    }
-
-    public void setPuestoDeTrabajoNombre(String puestoDeTrabajoNombre) {
-        this.puestoDeTrabajoNombre = puestoDeTrabajoNombre;
-    }
-
-    public List<DireccionDTO> getDirecciones() {
-        return direcciones;
-    }
-
-    public void setDirecciones(List<DireccionDTO> direcciones) {
-        this.direcciones = direcciones;
-    }
 
     /**
      * Convierte este DTO a una entidad UsuarioEntity.

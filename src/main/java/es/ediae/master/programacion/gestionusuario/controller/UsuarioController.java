@@ -2,11 +2,10 @@
 package es.ediae.master.programacion.gestionusuario.controller;
 
 
-import es.ediae.master.programacion.gestionusuario.model.PuestoDeTrabajoDTO;
+
 import es.ediae.master.programacion.gestionusuario.model.UsuarioDTO;
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
-import es.ediae.master.programacion.gestionusuario.service.IPuestoDeTrabajoService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -14,12 +13,15 @@ import java.util.List;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-	@Autowired
+	
 	private IUsuarioService usuarioService;
+	
 
 	
-	@Autowired
-	private IPuestoDeTrabajoService puestoDeTrabajoService;
+	
+	public UsuarioController(IUsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
 
 	/**
 	 * Iniciar sesión: verifica si el usuario y contraseña son válidos.
